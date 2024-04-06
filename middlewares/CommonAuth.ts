@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from "express";
-import { AuthPayLoad } from "../dto/Auth.dto";
+import { AuthPayload } from "../dto/Auth.dto";
 import { ValidateSignature } from "../utility";
 
 declare global {
   namespace Express {
     interface Request {
-      user?: AuthPayLoad;
+      user?: AuthPayload;
     }
   }
 }
