@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 import { AddFood, GetFoods, GetVendorProfile, UpdateVendorCoverImage, UpdateVendorProfile, UpdateVendorService, VendorLogin } from "../controllers/VendorController";
-import { Authenticate } from "../middlewares/CommonAuth";
+import { Authenticate } from "../middlewares";
 import multer from "multer";
 
 const router = express.Router();

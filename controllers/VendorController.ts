@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
 import { CreateFoodInputs, EditVendorInput, VendorLoginInput } from "../dto";
-import { Food, Vendor } from "../models";
-import { GeneratePassword, GenerateSalt, GenerateSignature, ValidatePassword } from "../utility";
+import { Food } from "../models";
+import { GenerateSignature, ValidatePassword } from "../utility";
 import { FindVendor } from "./AdminController";
 
 export const VendorLogin = async (req: Request, res: Response, next: NextFunction) => {
