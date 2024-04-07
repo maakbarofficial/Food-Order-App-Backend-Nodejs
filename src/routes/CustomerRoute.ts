@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 import { Authenticate } from "../middlewares";
-import { CustomerLogin, CustomerSignUp, CustomerVerify, EditCustomerProfile, GetCustomerProfile, RequestOTP } from "../controllers";
+import { CreateOrder, CustomerLogin, CustomerSignUp, CustomerVerify, EditCustomerProfile, GetCustomerProfile, GetOrderById, GetOrders, RequestOTP } from "../controllers";
 
 const router = express.Router();
 
@@ -20,6 +20,11 @@ router.get("/otp", Authenticate, RequestOTP);
 // Profile
 router.get("/profile", Authenticate, GetCustomerProfile);
 router.patch("/profile", Authenticate, EditCustomerProfile);
+
+// ORDERS
+router.post("/create-order", Authenticate, CreateOrder);
+router.get("/orders", Authenticate, GetOrders);
+router.get("/order/:id", Authenticate, GetOrderById);
 
 router.get("/", (req: Request, res: Response, next: NextFunction) => {
   res.json({ message: "Hello from customers" });
