@@ -12,7 +12,7 @@ export const GetFoodAvailablity = async (req: Request, res: Response, next: Next
     return res.status(200).json(result);
   }
 
-  return res.status(400).json({ message: "Data not found" });
+  return res.status(400).json({ message: "Data not found!" });
 };
 
 export const GetTopRestaurants = async (req: Request, res: Response, next: NextFunction) => {
