@@ -7,7 +7,12 @@ export interface OrderDoc extends Document {
   orderDate: Date;
   paidThrough: string; // COD, Credit, Wallet
   paymentResponse: string; // {status :true, response from payment provider}
-  orderStatus: string;
+  orderStatus: string; // waiting, preparing, onway, delivered, cancelled, failed
+  remarks: string;
+  deliveryId: string;
+  appliedOffers: boolean;
+  offerId: string;
+  readyTime: number; // max 60 min
 }
 
 const OrderSchema = new Schema(
@@ -38,6 +43,11 @@ const OrderSchema = new Schema(
     orderStatus: {
       type: String,
     },
+    remarks: { type: String },
+    deliveryId: { type: String },
+    appliedOffers: { type: Boolean },
+    offerId: { type: String },
+    readyTime: { type: Number },
   },
   {
     toJSON: {

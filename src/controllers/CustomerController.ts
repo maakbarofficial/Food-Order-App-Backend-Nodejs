@@ -280,6 +280,8 @@ export const CreateOrder = async (req: Request, res: Response, next: NextFunctio
 
     let netAmount = 0.0;
 
+    let vendorId;
+
     // calculate order amount
     const foods = await Food.find()
       .where("_id")
@@ -289,6 +291,7 @@ export const CreateOrder = async (req: Request, res: Response, next: NextFunctio
     foods.map((food) => {
       cart.map(({ _id, unit }) => {
         if (food._id == _id) {
+          vendorId = food.vendorId;
           netAmount += food.price * unit;
           cartItems.push({ food, unit });
         }
@@ -299,26 +302,31 @@ export const CreateOrder = async (req: Request, res: Response, next: NextFunctio
     if (cartItems) {
       const currentOrder = await Order.create({
         orderId: orderId,
+        vendorId: vendorId,
         items: cartItems,
         totalAmount: netAmount,
         orderDate: new Date(),
         paidThrough: "COD",
         paymentResponse: "res",
         orderStatus: "waiting",
+        remarks: "",
+        deliveryId: "",
+        appliedOffers: false,
+        offerId: null,
+        readyTime: 45,
       });
 
-      if (currentOrder) {
-        profile.orders.push(currentOrder);
+      profile.cart = [] as any;
+      profile.orders.push(currentOrder);
 
-        await profile.save();
+      const profileSaveResponse = await profile.save();
 
-        return res.status(200).json(currentOrder);
-      }
+      return res.status(200).json(profileSaveResponse);
+    } else {
+      // finally update orders to user account
+      return res.status(400).json({ message: "Error with Create Order!" });
     }
   }
-
-  // finally update orders to user account
-  return res.status(400).json({ message: "Error with Create Order!" });
 };
 
 export const GetOrders = async (req: Request, res: Response, next: NextFunction) => {
