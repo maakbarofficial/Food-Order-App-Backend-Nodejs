@@ -56,7 +56,7 @@ Welcome to the Online Food Delivery App Backend! This repository contains the ba
 
 ## API Documentation
 
-Detailed API documentation can be found [here](https://github.com/maakbarofficial/Food-Order-App-Backend-Nodejs/tree/main).
+Detailed API documentation can be found [here](https://github.com/maakbarofficial/Food-Order-App-Backend-Nodejs/tree/main/API%20Collection).
 
 ## Contributors
 
