@@ -13,6 +13,7 @@ import {
   GetOrderById,
   GetOrders,
   RequestOTP,
+  VerifyOffer,
 } from "../controllers";
 
 const router = express.Router();
@@ -35,15 +36,18 @@ router.get("/otp", RequestOTP);
 router.get("/profile", GetCustomerProfile);
 router.patch("/profile", EditCustomerProfile);
 
-// ORDERS
-router.post("/create-order", CreateOrder);
-router.get("/orders", GetOrders);
-router.get("/order/:id", GetOrderById);
-
-//CART
+// Cart
 router.post("/cart", AddToCart);
 router.get("/cart", GetCart);
 router.delete("/cart", DeleteCart);
+
+// Apply Offers
+router.get("/offer/verify/:id", VerifyOffer);
+
+// Orders
+router.post("/create-order", CreateOrder);
+router.get("/orders", GetOrders);
+router.get("/order/:id", GetOrderById);
 
 router.get("/", (req: Request, res: Response, next: NextFunction) => {
   res.json({ message: "Hello from customers" });

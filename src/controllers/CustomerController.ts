@@ -3,8 +3,7 @@ import { plainToClass } from "class-transformer";
 import { CreateCustomerInputs, EditCustomerProfileInputs, OrderInputs, UserLoginInputs } from "../dto/Customer.dto";
 import { validate } from "class-validator";
 import { GenerateOTP, GeneratePassword, GenerateSalt, GenerateSignature, OnRequestOTP, ValidatePassword } from "../utility";
-import { Customer, Food } from "../models";
-import { Order } from "../models/Order";
+import { Customer, Food, Offer, Order } from "../models";
 
 export const CustomerSignUp = async (req: Request, res: Response, next: NextFunction) => {
   const customerInputs = plainToClass(CreateCustomerInputs, req.body);
@@ -353,4 +352,25 @@ export const GetOrderById = async (req: Request, res: Response, next: NextFuncti
   }
 
   return res.status(400).json({ message: "Order data not available" });
+};
+
+export const VerifyOffer = async (req: Request, res: Response, next: NextFunction) => {
+  const offerId = req.params.id;
+  const customer = req.user;
+
+  if (customer) {
+    const appliedOffer = await Offer.findById(offerId);
+
+    if (appliedOffer) {
+      if (appliedOffer.promoType === "USER") {
+        // only can apply once per user
+      } else {
+        if (appliedOffer.isActive) {
+          return res.status(200).json({ message: "Offer is valid", offer: appliedOffer });
+        }
+      }
+    }
+  }
+
+  return res.status(400).json({ message: "Offer is not valid" });
 };
