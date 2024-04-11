@@ -1,0 +1,1427 @@
+{
+	"info": {
+		"_postman_id": "e185372e-9560-419b-b19a-d8158a749698",
+		"name": "Food Order App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31798759"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Admin - Create Vendor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Three Resturent\",\r\n  \"address\": \"ABCD USA\",\r\n  \"pincode\": \"123456\",\r\n  \"foodType\": [\"non-veg\", \"veg\"],\r\n  \"email\": \"three@three.com\",\r\n  \"password\": \"three12345\",\r\n  \"ownerName\": \"Imran\",\r\n  \"phone\": \"03451234567\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/vendor",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"vendor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Get Vendors",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"First Resturent\",\r\n  \"address\": \"ABC USA\",\r\n  \"pincode\": \"12345\",\r\n  \"foodType\": [\"non-veg\", \"veg\"],\r\n  \"email\": \"firstresturent1@one.com\",\r\n  \"password\": \"one12345\",\r\n  \"ownerName\": \"Ali\",\r\n  \"phone\": \"03451234567\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/vendors",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"vendors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Get Delivery Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/delivery/users",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"delivery",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Get Delivery Users Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"661860ee89510ae13c4b9bdc\",\r\n    \"status\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/delivery/verify",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"delivery",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Get Transections",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/admin/transections",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"transections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Get Transections By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/transection/66185321396b671eb98b34e0",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"transection",
+								"66185321396b671eb98b34e0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Get Vendor By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"First Resturent\",\r\n  \"address\": \"ABC USA\",\r\n  \"pincode\": \"12345\",\r\n  \"foodType\": [\"non-veg\", \"veg\"],\r\n  \"email\": \"firstresturent1@one.com\",\r\n  \"password\": \"one12345\",\r\n  \"ownerName\": \"Ali\",\r\n  \"phone\": \"03451234567\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/admin/vendor/660d5c620d9cc57416e877cc",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"vendor",
+								"660d5c620d9cc57416e877cc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vendor",
+			"item": [
+				{
+					"name": "Vendor - Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"one@one.com\",\r\n  \"password\": \"one12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/vendor/login",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"vendor",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Add Food",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Tikka",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Tikka is lazeez",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "tikka",
+									"type": "text"
+								},
+								{
+									"key": "foodType",
+									"value": "non-veg",
+									"type": "text"
+								},
+								{
+									"key": "readyTime",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/vendor/food",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"vendor",
+								"food"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/vendor/profile",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"vendor",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Get Orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/vendor/orders",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"vendor",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Process Order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"ACCEPT\",\r\n    \"remarks\": \"Wait for testy food\",\r\n    \"time\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/vendor/order/6616ba67824ebe6ad91554e5/process",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"vendor",
+								"order",
+								"6616ba67824ebe6ad91554e5",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Get Foods",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/vendor/foods",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"vendor",
+								"foods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Get Order Details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/vendor/order/asdsadsadasdsadsd",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"vendor",
+								"order",
+								"asdsadsadasdsadsd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Update Service",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lat\": 16.44456,\r\n    \"lng\": 72.59887\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/vendor/service",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"vendor",
+								"service"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Update Cover Images",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/Muhammad Ali Akbar/Downloads/ba4c1b71a1ce0b7d5ef34edcfdf5fa35.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/vendor/coverimage",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"vendor",
+								"coverimage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Update Profile",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ali\",\r\n    \"address\": \"565465456\",\r\n    \"foodType\": \"46545\",\r\n    \"phone\": \"2123465\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/vendor/profile",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"vendor",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Shopping",
+			"item": [
+				{
+					"name": "Food - Foods Availability",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/12345",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Food - Top Restaurants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/top-restaurants/1234565",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"top-restaurants",
+								"1234565"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Food - Restaurant By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/restaurant/6611421048ea4e428eb9ce25",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"restaurant",
+								"6611421048ea4e428eb9ce25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Food - Foods In 30 Mins",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/foods-in-30-min/12345",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"foods-in-30-min",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Food - Search Foods",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/search/12345",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"search",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer - Get Offers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjExYzczZThkYTNjODRlYjc3NDI4NzUiLCJlbWFpbCI6Im9uZUBvbmUuY29tIiwidmVyaWZpZWQiOmZhbHNlLCJpYXQiOjE3MTI0NDExNTAsImV4cCI6MTcxMjUyNzU1MH0.ErQZw8Jpy8rklvYz41QCIPaSNAgWk_sGi34v9Z2zhtw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/offers/12345",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"offers",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer - Verify Coupon",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjExYmQ2YjAwZjU0NmFkMzcyYWZiNWYiLCJlbWFpbCI6ImFsaUBhbGkuY29tIiwidmVyaWZpZWQiOmZhbHNlLCJpYXQiOjE3MTI4NjgwNTYsImV4cCI6MTcxMjk1NDQ1Nn0.-Sy0Uq-MCrsPBh8lak2QD4ho-ptNYoaEuFLeyQb8ZX4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/customer/offer/verify/661846a830da4d0a12a08225",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"offer",
+								"verify",
+								"661846a830da4d0a12a08225"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer - Create Payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjExYmQ2YjAwZjU0NmFkMzcyYWZiNWYiLCJlbWFpbCI6ImFsaUBhbGkuY29tIiwidmVyaWZpZWQiOmZhbHNlLCJpYXQiOjE3MTI4NjgwNTYsImV4cCI6MTcxMjk1NDQ1Nn0.-Sy0Uq-MCrsPBh8lak2QD4ho-ptNYoaEuFLeyQb8ZX4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offerId\": \"661846a830da4d0a12a08225\",\r\n    \"amount\": \"600\",\r\n    \"paymentMode\": \"COD\"\r\n}  \r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/customer/create-payment",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"create-payment"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Order - Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"trxId\": \"6618724a334397cb318d57cd\",\r\n    \"amount\": 580,\r\n    \"items\": [\r\n        {\r\n            \"_id\": \"661142a948ea4e428eb9ce33\",\r\n            \"unit\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/customer/create-order",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"create-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order - Get Orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"_id\": \"6611436048ea4e428eb9ce44\",\r\n        \"unit\": 2\r\n    },\r\n    {\r\n        \"_id\": \"661142a948ea4e428eb9ce33\",\r\n        \"unit\": 1\r\n    },\r\n    {\r\n        \"_id\": \"6611427048ea4e428eb9ce2e\",\r\n        \"unit\": 2\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/customer/orders",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order - Order By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"_id\": \"6611436048ea4e428eb9ce44\",\r\n        \"unit\": 2\r\n    },\r\n    {\r\n        \"_id\": \"661142a948ea4e428eb9ce33\",\r\n        \"unit\": 1\r\n    },\r\n    {\r\n        \"_id\": \"6611427048ea4e428eb9ce2e\",\r\n        \"unit\": 2\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/customer/order/66187338575f6d109f487422",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"order",
+								"66187338575f6d109f487422"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Offer",
+			"item": [
+				{
+					"name": "Offer - Create Offer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offerType\": \"VENDOR\",\r\n    \"title\": \"Special Offer 2\",\r\n    \"description\": \"Get 20% off on selected items\",\r\n    \"minValue\": \"50\",\r\n    \"offerAmount\": \"20\",\r\n    \"startValidity\": \"\",\r\n    \"endValidity\": \"\",\r\n    \"promocode\": \"SPECIAL20\",\r\n    \"promoType\": \"ALL\",\r\n    \"bank\": \"Example Bank\",\r\n    \"bins\": \"789012\",\r\n    \"pincode\": \"12345\",\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/vendor/offer",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"vendor",
+								"offer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Offer - Get Offers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/vendor/offers",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"vendor",
+								"offers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Offer - Edit Offer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offerType\": \"dsfsdf\",\r\n    \"title\": \"Special Offer edit\",\r\n    \"description\": \"Get 20% off on selected items\",\r\n    \"minValue\": \"50\",\r\n    \"offerAmount\": \"20\",\r\n    \"startValidity\": \"\",\r\n    \"endValidity\": \"\",\r\n    \"promocode\": \"SPECIAL20\",\r\n    \"promoType\": \"ALL\",\r\n    \"bank\": \"Example Bank\",\r\n    \"bins\": \"789012\",\r\n    \"pincode\": \"12345\",\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/vendor/offer/66183f4a34351602c32225f8",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"vendor",
+								"offer",
+								"66183f4a34351602c32225f8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Offer - Delete Offer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"_id\": \"6611436048ea4e428eb9ce44\",\r\n        \"unit\": 2\r\n    },\r\n    {\r\n        \"_id\": \"661142a948ea4e428eb9ce33\",\r\n        \"unit\": 1\r\n    },\r\n    {\r\n        \"_id\": \"6611427048ea4e428eb9ce2e\",\r\n        \"unit\": 2\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/vendor/offer/6611421048ea4e428eb9ce25",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"vendor",
+								"offer",
+								"6611421048ea4e428eb9ce25"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Customer - SignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"one@one.com\",\r\n    \"password\": \"one12345\",\r\n    // \"firstName\": \"firstName\",\r\n    // \"lastName\": \"lastName\",\r\n    // \"address\": \"address\",\r\n    \"phone\": \"03451234567\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/customer/signup",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer - Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ali@ali.com\",\r\n    \"password\": \"ali12345\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/customer/login",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer - Verify",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjExYzM2MjIzY2Y1YWI0NDdmYTkxZmQiLCJlbWFpbCI6ImFrYmFyQGFrYmFyLmNvbSIsInZlcmlmaWVkIjpmYWxzZSwiaWF0IjoxNzEyNDQwMTYyLCJleHAiOjE3MTI1MjY1NjJ9.byxgr9bxsmfkqGP1_sm-GQHacRPU-MfLvaFwDeSM-es",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"otp\": \"203450\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/customer/verify",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer - Get OTP",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjExYzczZThkYTNjODRlYjc3NDI4NzUiLCJlbWFpbCI6Im9uZUBvbmUuY29tIiwidmVyaWZpZWQiOmZhbHNlLCJpYXQiOjE3MTI0NDExNTAsImV4cCI6MTcxMjUyNzU1MH0.ErQZw8Jpy8rklvYz41QCIPaSNAgWk_sGi34v9Z2zhtw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/customer/otp",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer - Customer Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjExYzczZThkYTNjODRlYjc3NDI4NzUiLCJlbWFpbCI6Im9uZUBvbmUuY29tIiwidmVyaWZpZWQiOmZhbHNlLCJpYXQiOjE3MTI0NDExNTAsImV4cCI6MTcxMjUyNzU1MH0.ErQZw8Jpy8rklvYz41QCIPaSNAgWk_sGi34v9Z2zhtw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/customer/profile",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer - Customer Profile Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjExYzczZThkYTNjODRlYjc3NDI4NzUiLCJlbWFpbCI6Im9uZUBvbmUuY29tIiwidmVyaWZpZWQiOmZhbHNlLCJpYXQiOjE3MTI0NDExNTAsImV4cCI6MTcxMjUyNzU1MH0.ErQZw8Jpy8rklvYz41QCIPaSNAgWk_sGi34v9Z2zhtw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"ali\",\r\n    \"lastName\": \"akbar\",\r\n    \"address\": \"usasdsaddsaa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/customer/profile",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delivery User",
+			"item": [
+				{
+					"name": "Delivery User - SignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"done@one.com\",\r\n    \"password\": \"done12345\",\r\n    \"firstName\": \"dfirstName\",\r\n    \"lastName\": \"dlastName\",\r\n    \"address\": \"daddress\",\r\n    \"phone\": \"03451234567\",\r\n    \"pincode\": \"122445\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/delivery/signup",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"delivery",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delivery User- Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"done@one.com\",\r\n    \"password\": \"done12345\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/delivery/login",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"delivery",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delivery User - Change Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lat\": 19.13213213216545456,\r\n    \"lng\": 72.54564654564654465\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/delivery/change-status",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"delivery",
+								"change-status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Cart - Add To Cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"661142a948ea4e428eb9ce33\",\r\n    \"unit\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/customer/cart",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cart - Get Cart",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"_id\": \"6611436048ea4e428eb9ce44\",\r\n        \"unit\": 2\r\n    },\r\n    {\r\n        \"_id\": \"661142a948ea4e428eb9ce33\",\r\n        \"unit\": 1\r\n    },\r\n    {\r\n        \"_id\": \"6611427048ea4e428eb9ce2e\",\r\n        \"unit\": 2\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/customer/cart",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cart - Delete Cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"_id\": \"6611436048ea4e428eb9ce44\",\r\n        \"unit\": 2\r\n    },\r\n    {\r\n        \"_id\": \"661142a948ea4e428eb9ce33\",\r\n        \"unit\": 1\r\n    },\r\n    {\r\n        \"_id\": \"6611427048ea4e428eb9ce2e\",\r\n        \"unit\": 2\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/customer/cart",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjExYmQ2YjAwZjU0NmFkMzcyYWZiNWYiLCJlbWFpbCI6ImFsaUBhbGkuY29tIiwidmVyaWZpZWQiOmZhbHNlLCJpYXQiOjE3MTI4NzU5OTMsImV4cCI6MTcxMjk2MjM5M30.yZAh5XdY6f1TJ_XiWGaGXvZGXYYt5gq1mNEWgX5osWE",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

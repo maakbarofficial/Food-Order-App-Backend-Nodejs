@@ -2,8 +2,8 @@ import express, { Request, Response, NextFunction } from "express";
 import { plainToClass } from "class-transformer";
 import { CartItem, CreateCustomerInputs, EditCustomerProfileInputs, OrderInputs, UserLoginInputs } from "../dto/Customer.dto";
 import { validate } from "class-validator";
-import { GenerateOTP, GeneratePassword, GenerateSalt, GenerateSignature, OnRequestOTP, ValidatePassword } from "../utility";
-import { Customer, Food, Offer, Order, Transection } from "../models";
+import { GenerateOTP, GeneratePassword, GenerateSalt, GenerateSignature, ValidatePassword } from "../utility";
+import { Customer, DeliveryUser, Food, Offer, Order, Transection, Vendor } from "../models";
 
 export const CustomerSignUp = async (req: Request, res: Response, next: NextFunction) => {
   const customerInputs = plainToClass(CreateCustomerInputs, req.body);
@@ -371,6 +371,40 @@ const validateTransection = async (trxId: string) => {
   return { status: false, currentTransection };
 };
 
+const assignOrderForDelivery = async (orderId: string, vendorId: string) => {
+  // find the vendor
+  const vendor = await Vendor.findById(vendorId);
+
+  if (vendor) {
+    const areaCode = vendor.pincode;
+    const vendorLat = vendor.lat;
+    const vendorLng = vendor.lng;
+
+    // find the availbility delivery person
+    const deliveryPerson = await DeliveryUser.find({ pincode: areaCode, verified: true, isAvailable: true });
+
+    if (deliveryPerson) {
+      console.log("🚀 ~ assignOrderForDelivery ~ deliveryPerson:", deliveryPerson);
+
+      // check the nearist delivery person and assign the order
+      // Google Map API
+
+      const currentOrder = await Order.findById(orderId);
+
+      if (currentOrder) {
+        // update deliveryId
+        // currentOrder.deliveryId =
+        currentOrder.deliveryId = deliveryPerson[0]._id;
+        const response = await currentOrder.save();
+
+        console.log("🚀 ~ assignOrderForDelivery ~ response:", response);
+
+        // Notification to Customer
+      }
+    }
+  }
+};
+
 export const CreateOrder = async (req: Request, res: Response, next: NextFunction) => {
   // grab current login customer
   const customer = req.user;
@@ -390,9 +424,6 @@ export const CreateOrder = async (req: Request, res: Response, next: NextFunctio
 
     const profile = await Customer.findById(customer._id);
 
-    // grab order items from req
-    const cart = <[OrderInputs]>req.body; // [{id: abc, unit: abc}]
-
     let cartItems = Array();
 
     let netAmount = 0.0;
@@ -411,6 +442,8 @@ export const CreateOrder = async (req: Request, res: Response, next: NextFunctio
           vendorId = food.vendorId;
           netAmount += food.price * unit;
           cartItems.push({ food, unit });
+        } else {
+          console.log(`${food._id}/${_id}`);
         }
       });
     });
@@ -437,9 +470,13 @@ export const CreateOrder = async (req: Request, res: Response, next: NextFunctio
       currentTransection.orderId = orderId;
       currentTransection.status = "CONFIRMED";
 
-      const profileSaveResponse = await profile.save();
+      await currentTransection.save();
 
-      return res.status(200).json(profileSaveResponse);
+      assignOrderForDelivery(currentOrder._id, vendorId);
+
+      const profileResponse = await profile.save();
+
+      return res.status(200).json(currentOrder);
     } else {
       // finally update orders to user account
       return res.status(400).json({ message: "Error with Create Order!" });
