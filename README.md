@@ -1,4 +1,4 @@
-# Online Food Delivery App Backend
+# Food Delivery App Backend
 
 Welcome to the Online Food Delivery App Backend! This repository contains the backend codebase for an online food delivery application. The backend is designed to handle authentication and authorization for Admins, Vendors, Customers, and Delivery Users. Additionally, it includes modules for payment processing, transactions, and managing deliveries.
 
@@ -15,7 +15,7 @@ Welcome to the Online Food Delivery App Backend! This repository contains the ba
 
 - **Vendor Module:**
 
-  - Vendors can add/update their menu, manage orders, and track their earnings.
+  - Vendors can add/update their menu, manage orders, and and update their service.
 
 - **Customer Module:**
 
@@ -23,7 +23,7 @@ Welcome to the Online Food Delivery App Backend! This repository contains the ba
 
 - **Delivery User Module:**
 
-  - Delivery Users can view assigned orders, update delivery statuses, and communicate with customers.
+  - Delivery Users can view assigned orders, update delivery statuses, to communicate with customers.
 
 - **Payment Module:**
 
@@ -35,7 +35,13 @@ Welcome to the Online Food Delivery App Backend! This repository contains the ba
   - Recording and management of all financial transactions including orders, payments, refunds, etc.
 
 - **Delivery Module:**
+
   - Handling the delivery process from order assignment to completion, including real-time tracking and updates for customers.
+
+- **Additional Features:**
+
+  - OTP verification using Twilio for enhanced security during authentication.
+  - File upload functionality using multer for handling various types of file uploads.
 
 ## Technologies Used
 
@@ -49,16 +55,15 @@ Welcome to the Online Food Delivery App Backend! This repository contains the ba
 1. Clone the repository to your local machine.
 2. Install dependencies using `npm install`.
 3. Set up the database and configure the database connection in the application.
-4. Configure authentication mechanisms such as JWT, OAuth, etc.
-5. Integrate with a payment gateway provider and configure payment options.
-6. Run the application using `npm runs dev`.
-7. Access the API endpoints based on the provided documentation.
+4. Integrate with a payment gateway provider and configure payment options.
+5. Run the application using `npm runs dev`.
+6. Access the API endpoints based on the provided documentation.
 
-## API Documentation
+## API Collection
 
-Detailed API documentation can be found [here](https://github.com/maakbarofficial/Food-Order-App-Backend-Nodejs/tree/main/API%20Collection).
+Detailed API collection can be found [here](https://github.com/maakbarofficial/Food-Order-App-Backend-Nodejs/tree/main/API%20Collection).
 
-## Contributors
+## Developed By
 
 - [Muhammad Ali Akbar](https://aliakbar.vercel.app/) - (Software Engineer)
 
