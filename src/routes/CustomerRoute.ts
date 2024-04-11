@@ -3,6 +3,7 @@ import { Authenticate } from "../middlewares";
 import {
   AddToCart,
   CreateOrder,
+  CreatePayment,
   CustomerLogin,
   CustomerSignUp,
   CustomerVerify,
@@ -43,6 +44,9 @@ router.delete("/cart", DeleteCart);
 
 // Apply Offers
 router.get("/offer/verify/:id", VerifyOffer);
+
+// Payment
+router.post("/create-payment", CreatePayment);
 
 // Orders
 router.post("/create-order", CreateOrder);

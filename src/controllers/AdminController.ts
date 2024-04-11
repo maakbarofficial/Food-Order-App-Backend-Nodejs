@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 import { CreateVendorInput } from "../dto";
-import { Vendor } from "../models";
+import { Transection, Vendor } from "../models";
 import { GeneratePassword, GenerateSalt } from "../utility";
 
 export const FindVendor = async (id: string | undefined, email?: string) => {
@@ -65,4 +65,25 @@ export const GetVendorByID = async (req: Request, res: Response, next: NextFunct
   }
 
   return res.json({ message: "Vendor data not available" });
+};
+
+export const GetTransections = async (req: Request, res: Response, next: NextFunction) => {
+  const transections = await Transection.find();
+
+  if (transections) {
+    return res.status(200).json(transections);
+  }
+
+  return res.json({ message: "Transections data not available" });
+};
+
+export const GetTransectionById = async (req: Request, res: Response, next: NextFunction) => {
+  const id = req.params.id;
+  const transection = await Transection.findById(id);
+
+  if (transection) {
+    return res.status(200).json(transection);
+  }
+
+  return res.json({ message: "Transection data not available" });
 };
