@@ -1,8 +1,12 @@
 import express, { Request, Response, NextFunction } from "express";
 import {
   AddFood,
+  AddOffer,
+  DeleteOffer,
+  EditOffer,
   GetCurrentOrders,
   GetFoods,
+  GetOffers,
   GetOrderDetails,
   GetVendorProfile,
   ProcessOrder,
@@ -42,10 +46,17 @@ router.patch("/service", Authenticate, UpdateVendorService);
 router.post("/food", upload, Authenticate, AddFood);
 router.get("/foods", Authenticate, GetFoods);
 
+// Orders
 router.use(Authenticate);
 router.get("/orders", GetCurrentOrders);
 router.put("/order/:id/process", ProcessOrder);
 router.get("/order/:id", GetOrderDetails);
+
+// Offers
+router.get("/offers", GetOffers);
+router.post("/offer", AddOffer);
+router.put("/offer/:id", EditOffer);
+router.delete("/offer/:id", DeleteOffer);
 
 router.get("/", (req: Request, res: Response, next: NextFunction) => {
   res.json({ message: "Hello from vendor" });

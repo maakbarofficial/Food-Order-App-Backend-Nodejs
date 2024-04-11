@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
-import { CreateFoodInputs, EditVendorInput, VendorLoginInput } from "../dto";
-import { Food } from "../models";
+import { CreateFoodInputs, CreateOfferInputs, EditVendorInput, VendorLoginInput } from "../dto";
+import { Food, Offer } from "../models";
 import { GenerateSignature, ValidatePassword } from "../utility";
 import { FindVendor } from "./AdminController";
 import { Order } from "../models/Order";
@@ -210,4 +210,146 @@ export const ProcessOrder = async (req: Request, res: Response, next: NextFuncti
   }
 
   return res.json({ meesage: "Unable to process Order!" });
+};
+
+export const GetOffers = async (req: Request, res: Response, next: NextFunction) => {
+  const user = req.user;
+
+  if (user) {
+    let currentOffers = Array();
+
+    const offers = await Offer.find().populate("vendors");
+
+    if (offers) {
+      offers.map((item) => {
+        if (item.vendors) {
+          item.vendors.map((vendor) => {
+            if (vendor._id.toString() === user._id) {
+              currentOffers.push(item);
+            }
+          });
+        }
+
+        if (item.offerType === "GENERIC") {
+          currentOffers.push(item);
+        }
+      });
+    }
+
+    return res.json(currentOffers);
+  }
+  return res.json({ message: "Unable to get Offers!" });
+};
+
+export const AddOffer = async (req: Request, res: Response, next: NextFunction) => {
+  const user = req.user;
+
+  if (user) {
+    const { offerType, title, description, minValue, offerAmount, startValidity, endValidity, promocode, promoType, bank, bins, pincode, isActive } = <CreateOfferInputs>req.body;
+
+    const vendor = await FindVendor(user._id);
+
+    if (vendor) {
+      const offer = await Offer.create({
+        offerType,
+        title,
+        description,
+        minValue,
+        offerAmount,
+        startValidity,
+        endValidity,
+        promocode,
+        promoType,
+        bank,
+        bins,
+        pincode,
+        isActive,
+        vendors: [vendor],
+      });
+
+      return res.status(200).json(offer);
+    }
+  }
+
+  return res.json({ message: "Unable to create Offer!" });
+};
+
+export const EditOffer = async (req: Request, res: Response, next: NextFunction) => {
+  const user = req.user;
+
+  const offerId = req.params.id;
+
+  if (user) {
+    const { offerType, title, description, minValue, offerAmount, startValidity, endValidity, promocode, promoType, bank, bins, pincode, isActive } = <CreateOfferInputs>req.body;
+
+    const currentOffer = await Offer.findById(offerId);
+
+    if (currentOffer) {
+      const vendor = await FindVendor(user._id);
+
+      if (vendor) {
+        currentOffer.offerType = offerType;
+        currentOffer.title = title;
+        currentOffer.description = description;
+        currentOffer.minValue = minValue;
+        currentOffer.offerAmount = offerAmount;
+        currentOffer.startValidity = startValidity;
+        currentOffer.endValidity = endValidity;
+        currentOffer.promocode = promocode;
+        currentOffer.promoType = promoType;
+        currentOffer.bank = bank;
+        currentOffer.bins = bins;
+        currentOffer.pincode = pincode;
+        currentOffer.isActive = isActive;
+
+        const result = await currentOffer.save();
+
+        return res.status(200).json(result);
+      }
+    }
+  }
+
+  return res.json({ message: "Unable to edit Offer!" });
+};
+
+export const DeleteOffer = async (req: Request, res: Response, next: NextFunction) => {
+  const user = req.user;
+
+  const offerId = req.params.id;
+
+  if (user) {
+    const offers = await Offer.find().populate("vendors");
+
+    if (offers) {
+      // offers.map((item) => {
+      //   if (item.vendors) {
+      //     item.vendors.map((vendor) => {
+      //       if (vendor._id.toString() === user._id) {
+      //         const deletedOffer = await Offer.findByIdAndDelete(offerId);
+
+      //         return res.status(200).json(deletedOffer);
+      //       }
+      //     });
+      //   }
+      // });
+
+      const deletedOffers = [];
+      await Promise.all(
+        offers.map(async (item) => {
+          if (item.vendors) {
+            item.vendors.forEach(async (vendor) => {
+              if (vendor._id.toString() === user._id) {
+                const deletedOffer = await Offer.findByIdAndDelete(offerId);
+                deletedOffers.push(deletedOffer);
+              }
+            });
+          }
+        })
+      );
+
+      return res.json({ message: `Offer ${offerId} deleted successfully` });
+    }
+  }
+
+  return res.json({ message: "Unable to delete Offer!" });
 };
